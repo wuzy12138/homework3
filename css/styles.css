@@ -2,6 +2,10 @@ html{
     scroll-behavior: smooth;
 }
 
+img{
+  width: 100%;
+}
+
 body{
   background-color: #ddd;
   font-size: 18px;
@@ -119,12 +123,17 @@ header p{
 
 .about, .method, .clients, .contact{
   /*Your code here */
-  grid-column-start: 2 / span 1;
+  grid-column-start: 2;
+  grid-column-end: 2;
   /* See documentation for mobile view */
 }
 
 .about-image, .method-image, .clients-image, .contact-image{
    /*Your code here */
+  grid-column: 1 / span 2;
+  max-height: 500px;
+  overflow: hidden;
+  order: 1;
    /* See documentation for mobile view */
 }
 
