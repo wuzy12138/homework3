@@ -96,7 +96,7 @@ nav{
   text-align: left;
   /*Your code here*/
   /*Span the top row*/
-  vertical-align: right;
+  /* vertical-align: right; */
   grid-column: 1 / -1;
   grid-row: 1;
 }
