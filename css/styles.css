@@ -2,10 +2,6 @@ html{
     scroll-behavior: smooth;
 }
 
-img{
-  width: 100%;
-}
-
 body{
   background-color: #ddd;
   font-size: 18px;
@@ -25,6 +21,7 @@ h2{
   font-size: 32px;
   line-height: 1.5;
 }
+
 
 nav li{
   display:inline;
@@ -50,6 +47,9 @@ nav a:hover{
   transition: top 1s ease-out;
   z-index: 1;
   /*Your code here - position relative to the parent */
+  position: relative;
+  left: 500px;
+  top: -40px;
   /*Your code here - place 500px left and 40px higher */;
 }
 
@@ -63,15 +63,23 @@ nav a:hover{
   z-index: 1;
   position: absolute;
 }
-
 /*Your code here*/
 /*reference: http://nemesisdesign.net/blog/accessibility/nice-css-skip-links-appearing-focus/*/
 /*Add the selector and rule to move the skip
 link to the exact top of the page.*/
+.skip a{
+  position:absolute;
+  left:-99999px;
+  top: 0px;
+}
 
 /*Your code here*/
 /*Add the selector and code to put a 2px black
 border around all elements in focus.*/
+
+*:focus{
+  outline: 2px solid black;
+}
 
 footer{
   background-color: black;
@@ -85,15 +93,15 @@ footer{
 nav{
   background-color: #ddd;
   padding: 20px 0;
-  text-align: center;
+  text-align: left;
   /*Your code here*/
   /*Span the top row*/
+  vertical-align: right;
+  grid-column: 1 / -1;
+  grid-row: 1;
 }
 
 header{
-  background-image: url("../images/header.jpg");
-  background-color: #DDDDDD #858585 #707070 #B3B3B3;
-  min-height: 400px;
   background-attachment: fixed; /* Parallax effect */
   background-position: center;  /* Parallax effect */
   background-repeat: no-repeat; /* Parallax effect */
@@ -102,7 +110,12 @@ header{
   height: 400px;                /* Parallax effect */
   /* Your code here */
   /* Set background-image to header.jpg in the images folder */
+  background-image:url('../images/header.jpg');
+  background-color: #B3B3B3;
+  min-height:400px;
   /* Span one row */
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 
 header p{
@@ -115,62 +128,75 @@ header p{
 
 .container{
   /*Your code here  */
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
-  row-gap: 30px;
   /* See documentation for mobile view */
+  display:grid;
+  grid-template-columns:1fr 5fr 1fr;
+  grid-row-gap:30px;
 }
 
 .about, .method, .clients, .contact{
   /*Your code here */
-  grid-column-start: 2;
-  grid-column-end: 2;
   /* See documentation for mobile view */
+  grid-column:2/3;
 }
+
 
 .about-image, .method-image, .clients-image, .contact-image{
    /*Your code here */
-  grid-column: 1 / span 2;
-  max-height: 500px;
-  overflow: hidden;
-  order: 1;
    /* See documentation for mobile view */
+   grid-column: 1 / -1;;
+   max-height: 500px;
+   max-width: 100%;
+   overflow: hidden;
+
 }
 
 .about, .about-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 3 / 4;
 }
 
 .method, .method-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 4 / 5;
 }
 
 .clients, .clients-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 5 / 6;
 }
 
 .contact, .contact-image{
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 6 / 7;
 }
 
 .text-block{
+  max-height: 25vh;
   background-color: rgba(255, 255, 255, .8);
   border: 10px solid black;
   padding: 30px;
   position: relative;
   margin: auto;
+  overflow: scroll;
+  
   /*Your code here:*/
   /*Align the content in the center */
+  align-self: center;
+  justify-content: center;
+  text-align: center;
 }
 
 @media all and (min-width: 800px){
 
   .container{
     /*Your code here */
+    grid-template-columns: 50px auto 500px auto 50px;
+    grid-template-rows: 70px 400px 400px 400px 400px 400px 100px;
     /* See documentation for desktop view */
   }
 
@@ -183,12 +209,20 @@ header p{
 
    .about, .clients, .method-image, .contact-image {
     /*Your code here */
+    grid-column: 3/span 2;
     /* See documentation for desktop view */
   }
 
   .method, .contact, .about-image, .clients-image {
     /*Your code here */
+    grid-column:2/span 2;
     /* See documentation for desktop view */
+  }
+
+  .skip a:focus{
+    text-align: left;
+    position: relative;
+    top: 20px;
   }
 }  /*End the media query*/
 
